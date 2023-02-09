@@ -4,11 +4,10 @@ const request = require('request');
 const wrtc = require('wrtc');
 const io = require('socket.io-client');
 const config = require('./config.json');
+const functions = require('./functions');
 const signalingAddress = config.sig_protocol + '://' + config.sig_ip + ':' + config.sig_port;
 const socket = io(signalingAddress); // TODO: don't hard code this
-const url = config.rtsp_to_web_protocol + '://' + config.rtsp_to_web_ip + ':' + config.rtsp_to_web_port;
-console.log('url', url);
-//const url = 'http://localhost:8083/stream/demo/channel/0/webrtc';
+const url = functions.urlFromConfig(config);
 socket.on('connect', () => {
   console.log('Connected to the remote socket.io server');
   socket.emit('camera join', room);
