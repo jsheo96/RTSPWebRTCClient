@@ -1,0 +1,12 @@
+{
+  "name": "webrtc-codelab",
+  "version": "0.0.1",
+  "description": "WebRTC codelab",
+  "dependencies": {
+    "node-pre-gyp": "^0.17.0",
+    "node-static": "^0.7.10",
+    "request": "^2.88.2",
+    "socket.io": "^2.0.4",
+    "wrtc": "^0.4.7" 
+  }
+}
