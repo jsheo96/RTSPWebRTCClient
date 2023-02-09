@@ -2,6 +2,7 @@
   "sig_protocol" : "http",
   "sig_ip": "43.200.182.153",
   "sig_port": 8080,
+  "rtsp_to_web_protocol": "http",
   "rtsp_to_web_ip": "localhost",
   "rtsp_to_web_port": 8083
 }

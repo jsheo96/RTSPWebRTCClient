@@ -7,6 +7,12 @@
     "node-static": "^0.7.10",
     "request": "^2.88.2",
     "socket.io": "^2.0.4",
-    "wrtc": "^0.4.7" 
+    "wrtc": "^0.4.7"
+  },
+  "devDependencies": {
+    "jest": "^29.4.2"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
