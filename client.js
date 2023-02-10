@@ -45,10 +45,10 @@ function doAnswer2(socketId, n, sessionDescription) {
     })
     .catch((error) => {
         console.error('Error occurred during fetch answer sdp from signaling server.');
-        console.error('Please check the signaling server is on.');
+        console.error('Please check the RTSPtoWeb server is on.');
         console.error(error);
       });
-      
+
 }
 socket.on('disconnect', () => {
   console.log('Signaling server disconnected');
