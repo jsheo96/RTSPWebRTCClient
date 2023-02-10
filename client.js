@@ -42,7 +42,12 @@ function doAnswer2(socketId, n, sessionDescription) {
     .then(data => {
       const sessionDescription = { type: 'answer', sdp: atob(data) };
       socket.emit('answer', [socketId, n, sessionDescription]);
-    });
+    })
+    .catch((error) => {
+        console.error('Error occurred during fetch answer sdp from signaling server.');
+        console.error('Please check the signaling server is on.');
+        console.error(error);
+      });
 }
 socket.on('disconnect', () => {
   console.log('Signaling server disconnected');
