@@ -48,6 +48,7 @@ function doAnswer2(socketId, n, sessionDescription) {
         console.error('Please check the signaling server is on.');
         console.error(error);
       });
+      
 }
 socket.on('disconnect', () => {
   console.log('Signaling server disconnected');
