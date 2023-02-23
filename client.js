@@ -7,7 +7,6 @@ const config = require('./config.json');
 const functions = require('./functions');
 const signalingAddress = config.sig_protocol + '://' + config.sig_ip + ':' + config.sig_port;
 const socket = io(signalingAddress); // TODO: don't hard code this
-const url = functions.urlFromConfig(config);
 socket.on('connect', () => {
   console.log('Connected to the remote socket.io server');
   socket.emit('camera join', room);
@@ -29,11 +28,12 @@ socket.on('offer', function(params) {
   const n = params[1];
   const m = params[2];
   const sdp = params[3];
-  doAnswer2(socketId, n, sdp);
+  doAnswer2(socketId, n, m, sdp);
 });
 
-function doAnswer2(socketId, n, sessionDescription) {
+function doAnswer2(socketId, n, m, sessionDescription) {
   console.log('Sending answer to peer.');
+  const url = functions.urlFromConfigAndChannel(config, m);
   fetch(url, {
         method: 'POST',
         body: new URLSearchParams({ data: btoa(sessionDescription.sdp) })
@@ -45,7 +45,7 @@ function doAnswer2(socketId, n, sessionDescription) {
     })
     .catch((error) => {
         console.error('Error occurred during fetch answer sdp from signaling server.');
-        console.error('Please check the RTSPtoWeb server is on.');
+        console.error('Please check the RTSPtoWeb server is online');
         console.error(error);
       });
 
