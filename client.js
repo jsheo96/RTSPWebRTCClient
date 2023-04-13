@@ -6,17 +6,15 @@ const io = require('socket.io-client');
 const config = require('./config.json');
 const functions = require('./functions');
 const signalingAddress = config.sig_protocol + '://' + config.sig_ip + ':' + config.sig_port;
-const socket = io(signalingAddress); // TODO: don't hard code this
+const socket = io(signalingAddress);
 socket.on('connect', () => {
   console.log('Connected to the remote socket.io server');
   socket.emit('camera join', room);
   console.log('Attempted to camera join');
 });
 
-// TODO: use variables to determine RTSPtoWeb is connected well..
 var isChannelReady = false;
 
-// TODO: When creating a room, then authenticate users by password or something (cookies, etc.)
 var room = 'foo';
 
 socket.on('camera ready', function() {
